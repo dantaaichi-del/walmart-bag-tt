@@ -1,0 +1,191 @@
+#wmb-root {
+  --wmb-bg: var(--SmartThemeBlurTintColor, rgba(24,24,29,.94));
+  --wmb-text: var(--SmartThemeBodyColor, currentColor);
+  --wmb-border: var(--SmartThemeBorderColor, rgba(255,255,255,.20));
+  --wmb-shadow: var(--SmartThemeShadowColor, rgba(0,0,0,.34));
+  --wmb-size: 46px;
+  font-family: inherit;
+  color: var(--wmb-text);
+}
+#wmb-root, #wmb-root * { box-sizing: border-box; }
+
+/* 被购物袋收纳的原插件入口只隐藏“悬浮图标”，功能面板和数据完全保留。 */
+body.wmb-hide-originals .wmb-managed-launcher {
+  /* v0.2.1: use display:none instead of visibility:hidden.
+     Some legacy launchers (notably 午夜小猫 v0.1.7) keep a document-level
+     coordinate tap fallback. visibility:hidden leaves their old hit rectangle
+     alive, so taps on another panel can accidentally open them. */
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+body.wmb-hide-originals #mca-speech { display: none !important; }
+
+#wmb-bag {
+  position: fixed;
+  z-index: 2147483200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: grab;
+  isolation: isolate;
+}
+#wmb-bag::before, #wmb-bag::after { content: none !important; display: none !important; }
+#wmb-bag:focus, #wmb-bag:focus-visible, #wmb-bag:active { outline: 0 !important; border: 0 !important; box-shadow: none !important; }
+#wmb-bag img {
+  width: var(--wmb-size);
+  height: var(--wmb-size);
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.26));
+  transform-origin: 50% 65%;
+}
+/* 跟午夜小猫同节奏：4.8 秒、向上浮 3px。 */
+#wmb-bag.floaty:not(.pressed) img { animation: wmbFloat 4.8s ease-in-out infinite; }
+@keyframes wmbFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+#wmb-bag.pressed img { transform: scale(.94); }
+#wmb-bag.tap-pop img { animation: wmbTap .19s ease-out !important; }
+#wmb-bag.open img { filter: drop-shadow(0 2px 5px rgba(0,0,0,.28)) drop-shadow(0 0 7px color-mix(in srgb, var(--wmb-text) 24%, transparent)); }
+@keyframes wmbTap { 0%{transform:scale(1)} 45%{transform:scale(.86)} 100%{transform:scale(1)} }
+
+#wmb-orbit {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483199;
+  pointer-events: none;
+  visibility: hidden;
+}
+#wmb-orbit.open { visibility: visible; }
+#wmb-root .wmb-plugin {
+  all: unset;
+  box-sizing: border-box;
+  position: fixed;
+  left: var(--wmb-x);
+  top: var(--wmb-y);
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  margin-top: -25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 17px;
+  color: var(--wmb-text);
+  background: var(--wmb-bg);
+  border: 1px solid var(--wmb-border);
+  box-shadow: 0 8px 24px var(--wmb-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(calc(var(--wmb-cx) - var(--wmb-x)), calc(var(--wmb-cy) - var(--wmb-y))) scale(.35);
+  transition: opacity .17s ease, transform .21s cubic-bezier(.2,.8,.2,1), background .15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+#wmb-orbit.open .wmb-plugin { pointer-events: auto; opacity: 1; transform: translate(0,0) scale(1); }
+#wmb-root .wmb-plugin:active { transform: scale(.88); }
+#wmb-root .wmb-plugin img { width: 43px; height: 43px; display:block; object-fit:contain; pointer-events:none; filter:drop-shadow(0 2px 3px rgba(0,0,0,.18)); }
+
+#wmb-settings-dialog {
+  width: min(390px, calc(100vw - 22px));
+  max-width: 390px;
+  max-height: min(82dvh, 720px);
+  padding: 0;
+  border: 1px solid var(--wmb-border);
+  border-radius: 20px;
+  background: var(--wmb-bg);
+  color: var(--wmb-text);
+  box-shadow: 0 22px 70px var(--wmb-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: auto;
+  font-family: inherit;
+}
+#wmb-settings-dialog::backdrop { background: rgba(0,0,0,.38); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+.wmb-settings-card { padding: 14px; display:flex; flex-direction:column; gap:12px; color:inherit; font:inherit; }
+.wmb-settings-head { display:flex; align-items:center; justify-content:space-between; gap:10px; padding-bottom:8px; border-bottom:1px solid color-mix(in srgb, var(--wmb-border) 70%, transparent); }
+.wmb-settings-head > div { display:flex; flex-direction:column; gap:2px; }
+.wmb-settings-head b { font-size:16px; }
+.wmb-settings-head small { opacity:.66; font-size:10px; }
+#wmb-root .wmb-x, #wmb-root .wmb-wide {
+  all: unset; box-sizing:border-box; cursor:pointer; color:inherit; font:inherit; -webkit-tap-highlight-color:transparent;
+}
+#wmb-root .wmb-x { width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--wmb-border);font-size:22px; }
+.wmb-settings-section { padding:11px; border:1px solid color-mix(in srgb, var(--wmb-border) 76%, transparent); border-radius:14px; background:color-mix(in srgb, var(--wmb-bg) 88%, transparent); display:flex; flex-direction:column; gap:11px; }
+.wmb-settings-section label { font-size:12px; line-height:1.5; }
+.wmb-settings-section label > span { float:right; opacity:.72; }
+.wmb-settings-section input[type="range"] { width:100%; margin-top:7px; accent-color:currentColor; }
+.wmb-check { display:flex!important; align-items:center; gap:8px; }
+.wmb-check input { width:auto!important; }
+.wmb-section-title { font-size:12px; font-weight:700; opacity:.88; }
+.wmb-plugin-list { display:flex; flex-direction:column; gap:6px; }
+.wmb-plugin-row { display:grid!important; grid-template-columns:34px 1fr auto; gap:9px; align-items:center; padding:7px 8px; border-radius:11px; background:color-mix(in srgb, var(--wmb-text) 5%, transparent); }
+.wmb-plugin-row img { width:32px;height:32px;object-fit:contain; }
+.wmb-plugin-row span { display:flex; flex-direction:column; gap:1px; min-width:0; }
+.wmb-plugin-row small { opacity:.58; font-size:9px; }
+.wmb-plugin-row.missing { opacity:.48; }
+.wmb-plugin-row input { width:auto!important; }
+.wmb-note { padding:10px 11px; border:1px dashed var(--wmb-border); border-radius:12px; font-size:10.5px; line-height:1.65; opacity:.76; }
+#wmb-root .wmb-wide { width:100%; padding:9px 10px; text-align:center; border:1px solid var(--wmb-border); border-radius:12px; background:color-mix(in srgb, var(--wmb-text) 5%, transparent); }
+#wmb-root .wmb-wide:active, #wmb-root .wmb-x:active { transform:scale(.97); }
+
+@supports not (color: color-mix(in srgb, black, white)) {
+  #wmb-bag.open img { filter: drop-shadow(0 2px 5px rgba(0,0,0,.28)); }
+  .wmb-settings-head { border-color: var(--wmb-border); }
+  .wmb-settings-section, .wmb-plugin-row, #wmb-root .wmb-wide { background: var(--wmb-bg); border-color: var(--wmb-border); }
+}
+
+@media (max-width:700px) {
+  #wmb-settings-dialog { margin:auto; max-height:84dvh; }
+  #wmb-root .wmb-plugin { width:48px;height:48px;margin-left:-24px;margin-top:-24px;border-radius:16px; }
+  #wmb-root .wmb-plugin img { width:41px;height:41px; }
+}
+
+/* v0.2.2: expanded plugin icons must stay clean even under aggressive ST themes. */
+#wmb-root button.wmb-plugin,
+#wmb-root .wmb-plugin {
+  border: 0 !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  outline: 0 !important;
+  outline-style: none !important;
+  text-decoration: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-shadow: 0 8px 24px var(--wmb-shadow) !important;
+}
+#wmb-root button.wmb-plugin::before,
+#wmb-root button.wmb-plugin::after,
+#wmb-root .wmb-plugin::before,
+#wmb-root .wmb-plugin::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+  outline: 0 !important;
+}
+#wmb-root button.wmb-plugin:focus,
+#wmb-root button.wmb-plugin:focus-visible,
+#wmb-root button.wmb-plugin:active,
+#wmb-root .wmb-plugin:focus,
+#wmb-root .wmb-plugin:focus-visible,
+#wmb-root .wmb-plugin:active {
+  border: 0 !important;
+  outline: 0 !important;
+  outline-offset: 0 !important;
+}

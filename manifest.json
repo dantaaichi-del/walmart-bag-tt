@@ -1,0 +1,11 @@
+{
+  "display_name": "沃尔玛购物袋 · TT三件套",
+  "loading_order": 999,
+  "requires": [],
+  "optional": [],
+  "js": "index.js",
+  "css": "style.css",
+  "author": "蛋挞 × ChatGPT",
+  "version": "0.3.0-tt.1",
+  "auto_update": false
+}

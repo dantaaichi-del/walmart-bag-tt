@@ -1,0 +1,58 @@
+#butterfly-phone-standalone-v1-panel .bf-actions{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0}
+#butterfly-phone-standalone-v1-panel .bf-actions>*{flex:1 1 auto;min-width:0}
+#butterfly-phone-standalone-v1-panel .bf-actions button{min-height:34px;line-height:1.4}
+#butterfly-phone-standalone-v1-panel .bf-hint{line-height:1.65;margin:7px 0;opacity:.75;overflow-wrap:anywhere}
+#butterfly-phone-standalone-v1-panel .bf-section{font-size:.75em;font-weight:750;padding:10px;border-radius:10px;background:color-mix(in srgb,#88c7e8 12%,transparent);overflow-wrap:anywhere}
+#butterfly-phone-standalone-v1-panel .bf-person{display:flex;align-items:center;gap:6px;padding:9px 0;border-bottom:1px solid color-mix(in srgb,currentColor 12%,transparent)}
+#butterfly-phone-standalone-v1-panel .bf-person>div:nth-child(2){min-width:0;flex:1;font-size:.75em;overflow-wrap:anywhere}
+#butterfly-phone-standalone-v1-panel .bf-person small{display:block;opacity:.6;font-size:.8em;line-height:1.5}
+#butterfly-phone-standalone-v1-panel .bf-person button{flex:0 0 auto;font-size:.65em}
+#butterfly-phone-standalone-v1-panel .bf-remove-person,#butterfly-phone-standalone-v1-panel .bf-sticker-grid>div>button{border:0;background:transparent;color:inherit;cursor:pointer;padding:7px;font:inherit;font-size:.64em}
+#butterfly-phone-standalone-v1-panel .bf-field{display:grid;gap:6px;font-size:.78em;margin:8px 0}
+#butterfly-phone-standalone-v1-panel .bf-field input,#butterfly-phone-standalone-v1-panel .bf-actions input{width:100%;border:1px solid color-mix(in srgb,currentColor 20%,transparent);border-radius:9px;background:transparent;color:inherit;padding:8px;font:inherit;font-size:16px;min-width:0}
+#butterfly-phone-standalone-v1-panel .bf-member{display:flex;align-items:center;gap:9px;min-height:48px;padding:6px 0;font-size:.78em;border-bottom:1px solid color-mix(in srgb,currentColor 10%,transparent);cursor:pointer}
+#butterfly-phone-standalone-v1-panel .bf-member input{width:18px;height:18px;accent-color:#79b9d9}
+#butterfly-phone-standalone-v1-panel .bf-profile-hero{display:flex;align-items:center;gap:12px;padding:18px 0}
+#butterfly-phone-standalone-v1-panel .bf-profile-hero .avatar{width:60px;height:60px}
+#butterfly-phone-standalone-v1-panel .bf-group-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(140deg,#c2e9fa,#82abc9);color:#14334a;font-size:18px;font-weight:bold}
+#butterfly-phone-standalone-v1-panel .bf-sticker-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+#butterfly-phone-standalone-v1-panel .bf-sticker-grid>div{text-align:center;min-width:0;background:color-mix(in srgb,currentColor 4%,transparent);border-radius:10px;overflow:hidden}
+#butterfly-phone-standalone-v1-panel .bf-sticker-pick{width:100%;border:0;background:transparent;padding:6px;color:inherit;cursor:pointer}
+#butterfly-phone-standalone-v1-panel .bf-sticker-pick img{display:block;width:100%;height:76px;object-fit:contain}
+#butterfly-phone-standalone-v1-panel .bf-sticker-pick small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;line-height:1.5;margin-top:4px}
+#butterfly-phone-standalone-v1-panel .bf-sticker-image{display:block;max-width:min(140px,100%);max-height:140px;object-fit:contain}
+#butterfly-phone-standalone-v1-panel .bubble:has(.bf-sticker-image){background:transparent;border:none;box-shadow:none;padding:3px}
+#butterfly-phone-standalone-v1-panel .bf-crop-wrap{display:flex;justify-content:center;border-radius:12px;background:#101820;overflow:hidden;padding:4px}
+#butterfly-phone-standalone-v1-panel .bf-crop-canvas{display:block;max-width:100%;max-height:280px;object-fit:contain;touch-action:none;cursor:move}
+#butterfly-phone-standalone-v1-panel .bf-range{display:flex;gap:10px;align-items:center;font-size:.74em;min-height:40px}
+#butterfly-phone-standalone-v1-panel .bf-range input{flex:1;min-width:0;accent-color:#7cbbd8}
+#butterfly-phone-standalone-v1-panel .bf-video-card{border:1px solid color-mix(in srgb,currentColor 12%,transparent);border-radius:14px;padding:12px;margin:10px 0;background:linear-gradient(145deg,color-mix(in srgb,#78b9de 9%,transparent),transparent)}
+#butterfly-phone-standalone-v1-panel .bf-video-card .author-line{display:flex;align-items:center;gap:7px;font-size:.74em}
+#butterfly-phone-standalone-v1-panel .bf-video-card .author-line>span{margin-left:auto;font-size:.8em;opacity:.65}
+#butterfly-phone-standalone-v1-panel .bf-video-card h3{font-size:.86em;line-height:1.45;margin:10px 0}
+#butterfly-phone-standalone-v1-panel .bf-video-card p,#butterfly-phone-standalone-v1-panel .bf-video-content{font-size:.75em;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}
+#butterfly-phone-standalone-v1-panel .bf-ranking{font-size:.75em;padding:9px;border-radius:12px;background:color-mix(in srgb,#84c4e6 9%,transparent)}
+#butterfly-phone-standalone-v1-panel .bf-ranking>div{display:flex;gap:7px;align-items:center;padding-top:8px}
+#butterfly-phone-standalone-v1-panel .bf-ranking>div .avatar{width:26px;height:26px;flex:0 0 26px}
+#butterfly-phone-standalone-v1-panel .bf-ranking>div>span{flex:1}
+#butterfly-phone-standalone-v1-panel .bf-room-line{display:flex;align-items:flex-start;gap:7px;margin:9px 0}
+#butterfly-phone-standalone-v1-panel .bf-room-line>div:last-child{flex:1;min-width:0;font-size:.72em}
+#butterfly-phone-standalone-v1-panel .bf-room-line b{font-size:.9em;opacity:.7}
+#butterfly-phone-standalone-v1-panel .bf-room-line p{margin:4px 0;line-height:1.6;overflow-wrap:anywhere}
+#butterfly-phone-standalone-v1-panel .bf-room-line .avatar{width:28px;height:28px;flex:0 0 28px}
+#butterfly-phone-standalone-v1-panel .composer textarea{font-size:16px}
+#butterfly-phone-standalone-v1-panel .sx-track-form{display:grid;gap:7px;padding:10px;border:1px solid color-mix(in srgb,currentColor 12%,transparent);border-radius:12px;margin:10px 0}
+#butterfly-phone-standalone-v1-panel .sx-track-form input,#butterfly-phone-standalone-v1-panel .sx-hole-topic,#butterfly-phone-standalone-v1-panel .sx-poll-question,#butterfly-phone-standalone-v1-panel .sx-poll-options,#butterfly-phone-standalone-v1-panel .sx-audience select{width:100%;min-width:0;box-sizing:border-box;background:transparent;color:inherit;border:1px solid color-mix(in srgb,currentColor 20%,transparent);border-radius:8px;padding:8px;font:inherit;font-size:16px}
+#butterfly-phone-standalone-v1-panel .sx-poll-options{min-height:90px;margin:8px 0}
+#butterfly-phone-standalone-v1-panel .sx-queue{display:flex;gap:6px;align-items:center;padding:10px 0;border-bottom:1px solid color-mix(in srgb,currentColor 10%,transparent);font-size:.75em}
+#butterfly-phone-standalone-v1-panel .sx-queue>div,#butterfly-phone-standalone-v1-panel .sx-queue>span{flex:1;min-width:0;overflow-wrap:anywhere}
+#butterfly-phone-standalone-v1-panel .sx-queue small{display:block;opacity:.7;margin-top:5px;line-height:1.5}
+#butterfly-phone-standalone-v1-panel .sx-audio{width:100%;height:40px;margin:8px 0}
+#butterfly-phone-standalone-v1-panel .sx-audience{margin:8px 0;padding:8px;border-radius:10px;background:color-mix(in srgb,#82b5d5 7%,transparent)}
+#butterfly-phone-standalone-v1-panel .sx-audience summary{font-size:.7em;cursor:pointer;line-height:1.6}
+#butterfly-phone-standalone-v1-panel .sx-audience details>label{font-size:.7em}
+#butterfly-phone-standalone-v1-panel .sx-poll-row{display:flex;align-items:center;justify-content:space-between;gap:7px;font-size:.8em;margin:8px 0}
+
+/* User-selected livestream icon: solid black tile, no frame/outline/shadow. */
+#butterfly-phone-standalone-v1-panel .app[data-app="together"] .app-icon{background:#000!important;border:0!important;outline:0!important;box-shadow:none!important;border-radius:12px;overflow:hidden}
+#butterfly-phone-standalone-v1-panel .app[data-app="together"] .app-icon img{object-fit:contain;background:#000;border:0!important;outline:0!important;box-shadow:none!important;padding:2px}
